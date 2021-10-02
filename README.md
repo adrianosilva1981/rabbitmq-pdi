@@ -1,1 +1,1 @@
-# rabbitmq-pdi
+# rabbitmq-pdi examples

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="producerApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Producer</title>
+
+    <link rel="stylesheet" href="/public/css/materialize.min.css">
+    <link rel="stylesheet" href="/public/css/custom.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/public/js/angular.min.js"></script>
+    <script src="/public/js/materialize.min.js"></script>
+    <script src="/public/js/axios.min.js"></script>
+    <script src="http://localhost:4555/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="main-box" ng-controller="messageController" ng-init="OnInit()">
+        <h3 class="center-align">Welcome to Producer!</h3>
+        <div class="message-container">
+            <div id="history">
+                <ul class="collection">
+                    <li class="collection-item" ng-repeat="message in messages track by $index">
+                        <div class="item">
+                            <div>
+                                <div>{{message.text}}</div>
+                                <div><small>{{message.date}}</small></div>
+                            </div>
+                            <div>
+                                <i ng-if="message.status >= 1" class="tiny material-icons"
+                                    ng-class="{ 'check' : message.status > 1 }">
+                                    check
+                                </i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="container-input" class="row">
+                <form class="col s12">
+                    <div class="input-field col s12">
+                        <input id="message" type="text" class="validate" ng-model="newMessage" ng-keypress="onInputEnter($event)">
+                        <label for="message">Message</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/public/js/index.js"></script>
+</body>
+
+</html>
